@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/kancms/css/cms.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/kancms/css/bootstrap.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="application/javascript" src="{{ asset('bundles/kancms/js/bootstrap.min.js') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <h1>Kan Cms From Layout</h1>
+    {% block content %}{% endblock %}
+{% endblock %}

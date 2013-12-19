@@ -1,0 +1,4 @@
+kan_cms:
+    resource: "@KanCmsBundle/Resources/config/routing.yml"
+    prefix:   /
+
