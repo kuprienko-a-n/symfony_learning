@@ -1,3 +1,16 @@
-kan_cms_homepage:
-    pattern:  /kan/cms/{page}
-    defaults: { _controller: KanCmsBundle:Default:index,  page: 1}
+kan_cms_show:
+    pattern:  /kan/cms/{id}
+    defaults: { _controller: KanCmsBundle:Default:index,  id: 1}
+    requirements:
+            id:  \d+
+
+kan_cms_create:
+    pattern:  /kan/cms/create
+    defaults: { _controller: KanCmsBundle:Default:create}
+
+kan_cms_update:
+    pattern:  /kan/cms/update/{id}
+    defaults: { _controller: KanCmsBundle:Default:update}
+    requirements:
+                id:  \d+
+
