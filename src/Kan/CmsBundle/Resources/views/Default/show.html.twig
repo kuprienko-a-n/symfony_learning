@@ -1,0 +1,11 @@
+{% extends 'KanCmsBundle::layout.html.twig' %}
+{% block body %}
+    <h2>Page:</h2>
+    <ul>
+        <li>page id - {{ page.id }}</li>
+        <li>page title - {{ page.title }}</li>
+        <li>page description - {{ page.description }}</li>
+        <li>page created - {{ created }}</li>
+        <li>page edited - {{ edited }}</li>
+    </ul>
+{% endblock %}

@@ -1,16 +1,26 @@
+kan_cms_index:
+    pattern:  /kan/cms
+    defaults: { _controller: KanCmsBundle:Default:index}
+
 kan_cms_show:
     pattern:  /kan/cms/{id}
-    defaults: { _controller: KanCmsBundle:Default:index,  id: 1}
+    defaults: { _controller: KanCmsBundle:Default:show}
     requirements:
-            id:  \d+
+      id:  \d+
 
 kan_cms_create:
     pattern:  /kan/cms/create
     defaults: { _controller: KanCmsBundle:Default:create}
+    requirements:
 
 kan_cms_update:
     pattern:  /kan/cms/update/{id}
     defaults: { _controller: KanCmsBundle:Default:update}
     requirements:
-                id:  \d+
+      id:  \d+
 
+kan_cms_delete:
+    pattern:  /kan/cms/delete/{id}
+    defaults: { _controller: KanCmsBundle:Default:delete}
+    requirements:
+      id:  \d+

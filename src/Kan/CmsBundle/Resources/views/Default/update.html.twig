@@ -1,5 +1,6 @@
 {% extends 'KanCmsBundle::layout.html.twig' %}
 {% block body %}
-    <h2>Kan pdate Page</h2>
-    <h3>page "{{ page.title }}({{ page.id }})" is updated</h3>
+    <h2>Kan Update Page</h2>
+    <div>{{ form(page_form) }}</div>
 {% endblock %}
+
