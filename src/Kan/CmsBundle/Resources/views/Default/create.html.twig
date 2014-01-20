@@ -1,5 +1,27 @@
 {% extends 'KanCmsBundle::layout.html.twig' %}
 {% block body %}
     <h2>Kan Create Page</h2>
-    <div>{{ form(page_form) }}</div>
+
+    {{ form_start(page_form) }}
+    {{ form_errors(page_form) }}
+
+    <div>
+        {{ form_label(page_form.title) }}
+        {{ form_errors(page_form.title) }}
+        {{ form_widget(page_form.title) }}
+    </div>
+
+    <div>
+        {{ form_label(page_form.description, 'Page Description') }}
+        {{ form_errors(page_form.description) }}
+        {{ form_widget(page_form.description, {'attr': {'class': 'page_field'}}) }}
+    </div>
+
+    {{ page_form.vars.id }}
+
+    {{ form_row(page_form.created) }}
+    {{ form_row(page_form.edited) }}
+    {{ form_row(page_form.edited) }}
+
+    {{ form_end(page_form) }}
 {% endblock %}

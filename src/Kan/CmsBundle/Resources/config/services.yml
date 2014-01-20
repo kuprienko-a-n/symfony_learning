@@ -2,6 +2,10 @@ parameters:
 #    kan_cms.example.class: Kan\CmsBundle\Example
 
 services:
+  kan_cms.form.type.page:
+    class: Kan\CmsBundle\Form\PageType
+    tags:
+      - { name: form.type, alias: page }
 #    kan_cms.example:
 #        class: %kan_cms.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

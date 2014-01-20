@@ -5,6 +5,7 @@ namespace Kan\CmsBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Kan\CmsBundle\Entity\Page;
+use Kan\CmsBundle\Form\PageType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -59,13 +60,7 @@ class DefaultController extends Controller
         // just setup a fresh $task object (remove the dummy data)
         $page = new Page();
 
-        $form = $this->createFormBuilder($page)
-            ->add('title', 'text')
-            ->add('description', 'textarea')
-            ->add('created', 'date')
-            ->add('edited', 'date')
-            ->add('save', 'submit')
-            ->getForm();
+        $form = $this->createForm(new PageType(), $page);
 
         $form->handleRequest($request);
 
@@ -75,30 +70,14 @@ class DefaultController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('kan_cms_index'));
-        }else{
-            return $this->render('KanCmsBundle:Default:create.html.twig', array(
-                'page_form' => $form->createView(),
-            ));
+        } else {
+            return $this->render(
+                'KanCmsBundle:Default:create.html.twig',
+                array(
+                     'page_form' => $form->createView(),
+                )
+            );
         }
-//        $page = new Page();
-//        $title = 'Kan page 1';
-//        $description = 'Test page description';
-//        $created = $edited = new \DateTime();
-//
-//        $page->setTitle($title);
-//        $page->setDescription($description);
-//        $page->setCreated($created);
-//        $page->setEdited($edited);
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($page);
-//        $em->flush();
-//
-//        return $this->render('KanCmsBundle:Default:create.html.twig', array(
-//            'page' => $page,
-//            'created' => $page->getCreated()->format('Y-m-d H:i:s'),
-//            'edited' => $page->getEdited()->format('Y-m-d H:i:s'),
-//        ));
     }
 
     public function updateAction($id)
@@ -120,6 +99,7 @@ class DefaultController extends Controller
             ->add('save', 'submit')
             ->getForm();
 
+        //@see isSubmitted()
         $form->handleRequest($this->getRequest());
 
         if ($form->isValid()) {
