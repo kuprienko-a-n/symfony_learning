@@ -60,7 +60,7 @@ class DefaultController extends Controller
         // just setup a fresh $task object (remove the dummy data)
         $page = new Page();
 
-        $form = $this->createForm(new PageType(), $page);
+        $form = $this->createForm('page', $page);
 
         $form->handleRequest($request);
 
